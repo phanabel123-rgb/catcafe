@@ -11,8 +11,10 @@ public final class FelineOverLord implements Comparable<FelineOverLord> {
     /**
      * Create a new cat.
      *
-     * @param name   name of the cat
-     * @param weight weight of the cat
+     * @param name
+     *            name of the cat
+     * @param weight
+     *            weight of the cat
      */
     public FelineOverLord(String name, int weight) {
         this.name = name;
@@ -35,8 +37,8 @@ public final class FelineOverLord implements Comparable<FelineOverLord> {
     @Override
     public String toString() {
         return "FelineOverLord[" +
-            "name=" + name + ", " +
-            "weight=" + weight + ']';
+                "name=" + name + ", " +
+                "weight=" + weight + ']';
     }
 
 }

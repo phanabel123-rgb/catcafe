@@ -10,13 +10,18 @@ import java.util.function.Consumer;
 /**
  * Node in a binary search tree.
  *
- * @param data vehicle to store in the new node (must not be {@code null})
- * @param leftChild leftChild subtree
- * @param rightChild rightChild subtree
- * @param <T> parametric type of the node data
+ * @param data
+ *            vehicle to store in the new node (must not be {@code null})
+ * @param leftChild
+ *            leftChild subtree
+ * @param rightChild
+ *            rightChild subtree
+ * @param <T>
+ *            parametric type of the node data
  */
 public record Node<T extends Comparable<T>>(Tree<T> leftChild, T data, Tree<T> rightChild)
-        implements Tree<T> {
+        implements
+            Tree<T> {
     /** Create a new node: Ensure that all arguments are not {@code null}. */
     public Node {
         requireNonNull(data);

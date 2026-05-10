@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.Iterator;
 import java.util.Spliterator;
 import java.util.stream.Collectors;
+
 import org.junit.jupiter.api.Test;
 
 /** Testing the {@link Node} class. */
@@ -13,8 +14,10 @@ public class NodeTest {
     /**
      * Dummy class for parameterisation of the {@link Tree} class in test.
      *
-     * @param name dummy name
-     * @param number dummy number (used for comparison)
+     * @param name
+     *            dummy name
+     * @param number
+     *            dummy number (used for comparison)
      */
     private record Dummy(String name, int number) implements Comparable<Dummy> {
         @Override

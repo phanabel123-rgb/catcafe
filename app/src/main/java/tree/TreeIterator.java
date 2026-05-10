@@ -9,7 +9,8 @@ import java.util.Stack;
 /**
  * Iterator for our binary search trees {@link Tree}.
  *
- * @param <T> parametric type of the node data
+ * @param <T>
+ *            parametric type of the node data
  */
 public class TreeIterator<T extends Comparable<T>> implements Iterator<T> {
     private final Stack<Tree<T>> stack;
@@ -17,7 +18,8 @@ public class TreeIterator<T extends Comparable<T>> implements Iterator<T> {
     /**
      * Create a new Iterator for a given tree.
      *
-     * @param root top-level node of the tree
+     * @param root
+     *            top-level node of the tree
      */
     public TreeIterator(Tree<T> root) {
         requireNonNull(root);

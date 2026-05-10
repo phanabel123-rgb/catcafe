@@ -10,7 +10,8 @@ import java.util.function.Consumer;
 /**
  * Empty node in a binary search tree.
  *
- * @param <T> parametric type of the node data
+ * @param <T>
+ *            parametric type of the node data
  */
 public record Empty<T extends Comparable<T>>() implements Tree<T> {
     @Override

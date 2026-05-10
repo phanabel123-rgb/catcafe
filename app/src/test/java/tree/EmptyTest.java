@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.Iterator;
 import java.util.Spliterator;
 import java.util.stream.Stream;
+
 import org.junit.jupiter.api.Test;
 
 /** Testing the {@link Empty} class. */
@@ -136,7 +137,8 @@ public class EmptyTest {
         Tree<Dummy> e = new Empty<>();
         int count = 0;
 
-        for (Dummy _d : e) ++count;
+        for (Dummy _d : e)
+            ++count;
 
         assertEquals(0, count);
     }
