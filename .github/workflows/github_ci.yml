@@ -5,7 +5,7 @@ on:
         branches: [master]
     workflow_dispatch:
 
-
+jobs:
     job1:
         name: Build and Compile
         runs-on: ubuntu-latest
@@ -42,7 +42,7 @@ on:
             - name: Run Tests
               run: ./gradlew :app:test
 
-  
+
     job3:
         name: Check Formatting
         needs: job2
