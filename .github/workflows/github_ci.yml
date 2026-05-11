@@ -9,54 +9,61 @@ jobs:
     job1:
         name: Build and Compile
         runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: catcafe # <--- HIER den Namen deines Unterordners eintragen
         steps:
-            - uses: actions/checkout@v4
-            - uses: actions/setup-java@v4
-              with:
-                  java-version: '17'
-                  distribution: 'temurin'
-                  cache: gradle
+            -   uses: actions/checkout@v4
+            -   uses: actions/setup-java@v4
+                with:
+                    java-version: '17'
+                    distribution: 'temurin'
+                    cache: gradle
 
-            - name: Grant execute permission for gradlew
-              run: chmod +x gradlew
+            -   name: Grant execute permission
+                run: chmod +x gradlew
 
-            - name: Compile Java
-              run: ./gradlew :app:compileJava
-
+            -   name: Compile Java
+                run: ./gradlew :app:compileJava
 
     job2:
-        name: Run JUnit Tests
         needs: job1
+        name: Run JUnit Tests
         runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: catcafe
         steps:
-            - uses: actions/checkout@v4
-            - uses: actions/setup-java@v4
-              with:
-                  java-version: '17'
-                  distribution: 'temurin'
-                  cache: gradle
+            -   uses: actions/checkout@v4
+            -   uses: actions/setup-java@v4
+                with:
+                    java-version: '17'
+                    distribution: 'temurin'
+                    cache: gradle
 
-            - name: Grant execute permission for gradlew
-              run: chmod +x gradlew
+            -   name: Grant execute permission
+                run: chmod +x gradlew
 
-            - name: Run Tests
-              run: ./gradlew :app:test
-
+            -   name: Run Tests
+                run: ./gradlew :app:test
 
     job3:
-        name: Check Formatting
         needs: job2
+        name: Check Formatting
         runs-on: ubuntu-latest
+        defaults:
+            run:
+                working-directory: catcafe
         steps:
-            - uses: actions/checkout@v4
-            - uses: actions/setup-java@v4
-              with:
-                  java-version: '17'
-                  distribution: 'temurin'
-                  cache: gradle
+            -   uses: actions/checkout@v4
+            -   uses: actions/setup-java@v4
+                with:
+                    java-version: '17'
+                    distribution: 'temurin'
+                    cache: gradle
 
-            - name: Grant execute permission for gradlew
-              run: chmod +x gradlew
+            -   name: Grant execute permission
+                run: chmod +x gradlew
 
-            - name: Check Spotless
-              run: ./gradlew :app:spotlessCheck
+            -   name: Check Spotless
+                run: ./gradlew :app:spotlessCheck
