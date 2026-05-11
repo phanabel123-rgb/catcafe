@@ -2,12 +2,12 @@ name: GitHub CI
 
 on:
     push:
-        branches: [main, master]
+        branches: [master]
     workflow_dispatch:
 
 jobs:
-    job1:
-        name: Build and Compile
+
+    build:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
@@ -17,18 +17,15 @@ jobs:
                   distribution: 'temurin'
                   cache: gradle
 
-            - name: Grant execute permission
-                
+            - name: Grant execute permission for gradlew
               run: chmod +x gradlew
-              working-directory: catcafe
 
             - name: Compile Java
               run: ./gradlew :app:compileJava
-              working-directory: catcafe
 
-    job2:
-        name: Run JUnit Tests
-        needs: job1
+
+    test:
+        needs: build
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
@@ -38,13 +35,15 @@ jobs:
                   distribution: 'temurin'
                   cache: gradle
 
-            - name: Run Tests
+            - name: Grant execute permission for gradlew
+              run: chmod +x gradlew
+
+            - name: Run JUnit Tests
               run: ./gradlew :app:test
-              working-directory: catcafe
 
-    job3:
-        name: Check Formatting
-        needs: job2
+   
+    formatting:
+        needs: test
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
@@ -54,6 +53,8 @@ jobs:
                   distribution: 'temurin'
                   cache: gradle
 
-            - name: Check Spotless
+            - name: Grant execute permission for gradlew
+              run: chmod +x gradlew
+
+            - name: Check Spotless Formatting
               run: ./gradlew :app:spotlessCheck
-              working-directory: catcafe
